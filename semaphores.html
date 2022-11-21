@@ -14,8 +14,7 @@
         <h2>Semaphores are variables which can be decremented by 1 and incremented by 1 with sem_wait() and sem_post() respectively. A semaphore can be used as a lock. It then prevents too many threads from accessing something at the same time. Each time a thread wants to access a piece of content that is protected by a semaphore it has to first decrement the semaphore value with sem_wait() before it can proceed. When the resulting value is negative, meaning the maximum number of threads that are allowed to enter that piece of content is already accessing the content, the thread can’t continue and has to wait so it goes to sleep to preserve resources. When one of the threads that was accessing the content is done it increments the semaphore value by 1 and wakes up the waiting thread by calling sem_post() so it can now enter the content.
 
 You can also have a semaphore as a condition variable. A thread then has to wait for a condition to become true before it can continue doing its work. The semaphore is initially set to zero. If a thread has to wait for a condition to be met the thread will first call sem_wait() which decrements the semaphore value of 0 by 1 making it -1. When another thread then finishes its job which results in the condition being met it calls sem_post() which increments the semaphore value with 1 making it 0 again and wakes up one or more waiting threads so they can continue doing their work.
-</h2>
-        <a href="'./"><h2>Click here return to the main page!</h2></a>
+        </h2>
     </div>
 </body>
 </html>
