@@ -11,7 +11,28 @@
 <body>
     <div class="container">
         <h1>ABOUT Locks</h1>
-        <h2>ADD SUMMARY HERE</h2>
+        <h2>Basically, a lock is a type of variable that creates limits on access to a certain resource when there are many threads of execution. A lock can either be locked or unlocked, therefore, one thread holds the lock and is presumably in a critical condition. 
+The mechanics of locks follows a simple structure:
+A thread can acquire the lock using lock() if there aren’t any other threads to hold the lock. In this way, other threads are prevented from entering the critical section while the first thread that holds the lock is in there.
+Once the owner of the locks calls unlock(), the lock becomes free again to be acquired by the other threads.
+Locks are often referred to as “mutex”, because it provides mutual exclusion between threads. There are 3 main criteria that a lock has to meet in order to evaluate its effectiveness:
+Does the lock provide mutual exclusion?
+Fairness: does each thread contending for the lock get a fair shot at acquiring it once its free?
+Performance: how much time overheads added by using the lock?
+To actually make the locks provide mutual exclusion, there are several solutions.
+One of the first solutions is to just disable the interrupts for critical sections.This is called controlling interrupts. It’s a simple solution, but it has its problems. The main problem is that it doesn’t work on multiple processors. That’s why system designers have designed a hardware support for locking threads known as test and set. This hardware support tests the old value and simultaneously updates said value to new. The test and set is powerful enough to create a spin lock. A spin lock uses cpu cycles, until the lock becomes available. The compare and swap instruction is another hardware primitive that some systems provide which tests if the value at the address specified by ptr is equal to expected; if so, update the memory location pointed to by ptr with the new value. If not, do nothing.
+
+There are also some platforms that provide a pair of instructions that work in concert to help build critical sections. For example MIPS, it uses load-linked that operates like typical load instructions, it then fetches a value memory to be then stored in the register. The store-conditionals make this different, as they only succeed if there is no intervening store to the address has taken place. Another hardware primitive is the fetch-and-add instruction. This instruction atomically increments a value while returning the old value at a particular address.
+
+As mentioned before, locks like to spin, but it wastes a lot of time in doing so. There are solutions to this problem:
+-Yield(), it moves the caller from the runner state to the ready state.
+-Using queues: sleeping instead of spinning.
+
+There are also other OS available for more efficient locks. Different OS also means different support. Although the different support are similar, the details do vary.
+
+
+There also was an old approach to locks called the “two-phase lock”. The lock has 2 phases. In the first phase the lock spins, hoping that it can acquire the lock, if unsuccessful the caller is put back to sleep until a lock becomes free. This approach is a hybrid approach, because it combines 2 good ideas for a better idea. It is heavily dependent on hardware environment, number of threads and other workload details, but making a single general-purpose lock is a real challenge.
+</h2>
         <a href="'./"><h2>Click here return to the main page!</h2></a>
     </div>
 </body>
