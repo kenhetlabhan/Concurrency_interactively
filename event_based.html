@@ -11,33 +11,20 @@
 <body>
     <div class="container">
         <h1>ABOUT Event-based Concurrency</h1>
-        <h2>By adding locks to a data structure it makes the structure thread safe, therefore the datastructure is usable by threads. It also makes it having a high yielding performance and multi-thread access to data structures. There are several different structures: Counters, Linked-lists, Queues and Hash Tables.
+        <h2>Event-based Concurrency is a modern approach and style of program that is composed of a single-thread concurrent application. It avoids the problem of multithread applications such as missing locks and deadlocks. It achieves this by utilizing an event loop, which waits for an event to occur. When an event finally occurs the event loop checks what type of event it is and completes the small amount of work required such as issuing an I/O or scheduling other events. 
 
-There are 2 different types of counters:
-Concurrent counter:
-Counter: A device or function that stores the amount of times equal values are added or events have occurred
-Counter with locks: When a routine is called, a lock is acquired, and it is released when the call is returned.
- Perfect scaling: Threads complete work on processors in parallel.
-Approximate Counter:
-Helps counter the issue of bugs in counter scalability on multicore machines.
-A single logical counter using multiple local physical counters, one per CPU core, and a single global counter. 
-A lock per local physical counter and the global counter.
+As an event handler, event-based concurrency only processes one event at a time. This means that only one activity is taking place in the system at any given time. Therefore, deciding which event to complete next is equivalent to scheduling.
 
-Concurrent linked lists:
-Linked lists: An ordered structured which consists of nodes which has an element and a pointer
-Issue with concurrent linked lists: Failure of function causes the lock to be released and must undo all the state before returning, causing bugs.
-Only surrounding locks and releases around the critical code area.
-Scaling linked lists: Hand over hand locking (Lock coupling)
+Event-base concurrency does its schedule via an API system calls such as select() or call(), which are interfaces that check for incoming I/Os. Simply a non-blocking event loop, checks for incoming packets, reads from their sockets with messages upon them, and replies as needed.
 
-Concurrent queues:
-Queue: First in first out system which orders a sequence of operations.
-Two locks to enable concurrency of enqueue and dequeue operations.
-In the common case, the enqueue routine will only access the tail lock, and dequeue only the head lock.
-Queues are commonly used in mutli-threaded applications
+One of the benefits of event-based concurrency is that there is no need for acquiring and releasing locks since it is an event handler and thus only process a single event at a time. Another benefit of event-based concurrency is that it can not be interrupted by other threads since it is a single-thread concurrent application.
+For the same reason, event-based concurrency also offers greater control over the scheduler.
 
-Concurrent hash table:
-It uses a lock per hash bucket for a better performance.
-Many concurrent operations are taking place. </h2>
+
+The main Limitation of event-based concurrency is that it can not execute locks that will. For example, a simple HTTP request can cause the system to block. To overcome this limitation you must issue Asynchronous I/O which are alternative ways to issue an I/O request. Asynchronous I/O requires the event handler to do manual stacking. This makes it particularly difficult to integrate event-based concurrency into other aspects of the modern system such as packaging.
+
+Therefore, it is significantly more complicated to write event-based code compared to thread-based code.
+</h2>
     </div>
 </body>
 </html>
