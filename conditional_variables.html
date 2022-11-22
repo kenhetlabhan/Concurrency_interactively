@@ -6,15 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://www.downloadclipart.net/large/40245-number-28-clipart.png" type="image/png">
     <link rel="stylesheet" href="conditional_variables.css">
-    <tittle>CONDITIONAL VARIABLES CONCURRENCY</tittle>
+    <div id="toptopwrap">
+        <tittle>Concurrency Interactively: Conditional Variables</tittle>
+    </div>
 </head>
+<nav>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Summary</button>
+                <div class="dropdown-content">
+                <a href="lock_based.html">Lock Based Concurrency</a>
+                <a href="event_based.html">Event Based Concurrency</a>
+                <a href="conditional_variables.html">Conditional Variables</a>
+                <a href="locks.html">Locks</a>
+                <a href="problems.html">Problems</a>
+                <a href="semaphores.html">Semaphores</a>
+                <a href="game.html">Game</a>
+        </div>
+    </div>
+</nav>
 <body>
-    <div class="container">
-        <h1>ABOUT Conditional Variables</h1>
-        <h2>A condition variable is a queue where threads can put themselves on when a certain condition is not met. There are two operations associated with condition variables. Wait(), which a thread uses when a condition is not met so it wants to go to sleep, and Signal(), which a thread uses when it has changed something making it so the condition is met, that wakes up one or multiple threads that are waiting for the condition to be met. First a variable “done” will be made with the value 0 which is used to check if the condition is met or not before the thread will continue or call Wait(). This variable is there to prevent a thread from not being able to wake up if Signal() has already been called before the thread called Wait(). If it is 0 it won't be able to continue so it calls Wait() and enters the queue. It also goes to sleep so as to not waste precious CPU resources. When another thread has finished its work causing the condition to be met, it calls Signal() which increments the variable to 1 and wakes up one or more waiting threads in the queue so that they can continue. If the condition is already met when the thread checks the variable and sees a 1 it can simply continue.
-
- The operation Wait() has a mutex as a parameter which is locked when Wait() is being called. The lock is only released after the thread is put to sleep. When a thread wakes up Wait() has to reacquire the lock before it can return to that thread. This mutex system is there to prevent race conditions from happening. Without it there could be a situation where after a parent thread makes a child thread it checks if the variable done is 0. Since it is, it will call Wait() but just before it is able to do that it gets interrupted and the child thread calls Signal() and increments the variable done to 1. After that the parent thread calls Wait() and waits till the child thread is done. But because Signal() has already been called the parent thread will be waiting for something that won’t happen and it won’t be able to be woken up.
-</h2>
+    <div id="centerwrap">
+        <div class="container">
+            <h1>About Conditional Variables:</h1>
+            <p>
+                A condition variable is a queue where threads can put themselves on when a certain condition is not met. There are two operations associated with condition variables. Wait(), which a thread uses when a condition is not met so it wants to go to sleep, and Signal(), which a thread uses when it has changed something making it so the condition is met, that wakes up one or multiple threads that are waiting for the condition to be met. First a variable “done” will be made with the value 0 which is used to check if the condition is met or not before the thread will continue or call Wait(). This variable is there to prevent a thread from not being able to wake up if Signal() has already been called before the thread called Wait(). If it is 0 it won't be able to continue so it calls Wait() and enters the queue. It also goes to sleep so as to not waste precious CPU resources. When another thread has finished its work causing the condition to be met, it calls Signal() which increments the variable to 1 and wakes up one or more waiting threads in the queue so that they can continue. If the condition is already met when the thread checks the variable and sees a 1 it can simply continue.
+                
+                The operation Wait() has a mutex as a parameter which is locked when Wait() is being called. The lock is only released after the thread is put to sleep. When a thread wakes up Wait() has to reacquire the lock before it can return to that thread. This mutex system is there to prevent race conditions from happening. Without it there could be a situation where after a parent thread makes a child thread it checks if the variable done is 0. Since it is, it will call Wait() but just before it is able to do that it gets interrupted and the child thread calls Signal() and increments the variable done to 1. After that the parent thread calls Wait() and waits till the child thread is done. But because Signal() has already been called the parent thread will be waiting for something that won’t happen and it won’t be able to be woken up.
+            <p>
+        </div>
     </div>
 </body>
 </html>
