@@ -6,25 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://www.downloadclipart.net/large/40245-number-28-clipart.png" type="image/png">
     <link rel="stylesheet" href="event_based.css">
-    <tittle>EVENT-BASE CONCURRENCY</tittle>
+    <div id="toptopwrap">
+        <tittle>Concurrency Interactively: Event-based Concurrency</tittle>
+    </div>
 </head>
+<nav>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Summary</button>
+                <div class="dropdown-content">
+                <a href="lock_based.html">Lock Based Concurrency</a>
+                <a href="event_based.html">Event Based Concurrency</a>
+                <a href="conditional_variables.html">Conditional Variables</a>
+                <a href="locks.html">Locks</a>
+                <a href="problems.html">Problems</a>
+                <a href="semaphores.html">Semaphores</a>
+                <a href="game.html">Game</a>
+        </div>
+    </div>
+</nav>
 <body>
-    <div class="container">
-        <h1>ABOUT Event-based Concurrency</h1>
-        <h2>Event-based Concurrency is a modern approach and style of program that is composed of a single-thread concurrent application. It avoids the problem of multithread applications such as missing locks and deadlocks. It achieves this by utilizing an event loop, which waits for an event to occur. When an event finally occurs the event loop checks what type of event it is and completes the small amount of work required such as issuing an I/O or scheduling other events. 
+    <div id="centerwrap">
+        <div class="container">
+            <h1>About Event-based Concurrency:</h1>
+            <p>
+                Event-based Concurrency is a modern approach and style of program that is composed of a single-thread concurrent application. It avoids the problem of multithread applications such as missing locks and deadlocks. It achieves this by utilizing an event loop, which waits for an event to occur. When an event finally occurs the event loop checks what type of event it is and completes the small amount of work required such as issuing an I/O or scheduling other events. 
 
-As an event handler, event-based concurrency only processes one event at a time. This means that only one activity is taking place in the system at any given time. Therefore, deciding which event to complete next is equivalent to scheduling.
-
-Event-base concurrency does its schedule via an API system calls such as select() or call(), which are interfaces that check for incoming I/Os. Simply a non-blocking event loop, checks for incoming packets, reads from their sockets with messages upon them, and replies as needed.
-
-One of the benefits of event-based concurrency is that there is no need for acquiring and releasing locks since it is an event handler and thus only process a single event at a time. Another benefit of event-based concurrency is that it can not be interrupted by other threads since it is a single-thread concurrent application.
-For the same reason, event-based concurrency also offers greater control over the scheduler.
-
-
-The main Limitation of event-based concurrency is that it can not execute locks that will. For example, a simple HTTP request can cause the system to block. To overcome this limitation you must issue Asynchronous I/O which are alternative ways to issue an I/O request. Asynchronous I/O requires the event handler to do manual stacking. This makes it particularly difficult to integrate event-based concurrency into other aspects of the modern system such as packaging.
-
-Therefore, it is significantly more complicated to write event-based code compared to thread-based code.
-</h2>
+                As an event handler, event-based concurrency only processes one event at a time. This means that only one activity is taking place in the system at any given time. Therefore, deciding which event to complete next is equivalent to scheduling.
+                    
+                Event-base concurrency does its schedule via an API system calls such as select() or call(), which are interfaces that check for incoming I/Os. Simply a non-blocking event loop, checks for incoming packets, reads from their sockets with messages upon them, and replies as needed.
+                    
+                One of the benefits of event-based concurrency is that there is no need for acquiring and releasing locks since it is an event handler and thus only process a single event at a time. Another benefit of event-based concurrency is that it can not be interrupted by other threads since it is a single-thread concurrent application.
+                For the same reason, event-based concurrency also offers greater control over the scheduler.
+                            
+                The main Limitation of event-based concurrency is that it can not execute locks that will. For example, a simple HTTP request can cause the system to block. To overcome this limitation you must issue Asynchronous I/O which are alternative ways to issue an I/O request. Asynchronous I/O requires the event handler to do manual stacking. This makes it particularly difficult to integrate event-based concurrency into other aspects of the modern system such as packaging.
+                    
+                Therefore, it is significantly more complicated to write event-based code compared to thread-based code.
+            <p>
+        </div>
     </div>
 </body>
 </html>
