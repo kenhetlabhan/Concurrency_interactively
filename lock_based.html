@@ -6,39 +6,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://www.downloadclipart.net/large/40245-number-28-clipart.png" type="image/png">
     <link rel="stylesheet" href="lock_based.css">
-    <tittle>LOCK-BASE CONCURRENCY</tittle>
+    <div id="toptopwrap">
+        <tittle>Concurrency Interactively: Lock-Based Concurrency</tittle>
+    </div>
 </head>
+<nav>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Summary</button>
+                <div class="dropdown-content">
+                <a href="lock_based.html">Lock Based Concurrency</a>
+                <a href="event_based.html">Event Based Concurrency</a>
+                <a href="conditional_variables.html">Conditional Variables</a>
+                <a href="locks.html">Locks</a>
+                <a href="problems.html">Problems</a>
+                <a href="semaphores.html">Semaphores</a>
+                <a href="game.html">Game</a>
+        </div>
+    </div>
+</nav>
 <body>
-    <div class="container">
-        <h1>ABOUT Lock-based Concurrency</h1>
-        <h2>By adding locks to a data structure it makes the structure thread safe, therefore the datastructure is usable by threads. It also makes it having a high yielding performance and multi-thread access to data structures. There are several different structures: Counters, Linked-lists, Queues and Hash Tables.
+    <div id="centerwrap">
+        <div class="container">
+            <h1>About Lock-based Concurrency:</h1>
+            <p>
+                By adding locks to a data structure it makes the structure thread safe, therefore the datastructure is usable by threads. It also makes it having a high yielding performance and multi-thread access to data structures. There are several different structures: Counters, Linked-lists, Queues and Hash Tables.
 
-There are 2 different types of counters:
-Concurrent counter:
-Counter: A device or function that stores the amount of times equal values are added or events have occurred
-Counter with locks: When a routine is called, a lock is acquired, and it is released when the call is returned.
- Perfect scaling: Threads complete work on processors in parallel.
-Approximate Counter:
-Helps counter the issue of bugs in counter scalability on multicore machines.
-A single logical counter using multiple local physical counters, one per CPU core, and a single global counter. 
-A lock per local physical counter and the global counter.
-
-Concurrent linked lists:
-Linked lists: An ordered structured which consists of nodes which has an element and a pointer
-Issue with concurrent linked lists: Failure of function causes the lock to be released and must undo all the state before returning, causing bugs.
-Only surrounding locks and releases around the critical code area.
-Scaling linked lists: Hand over hand locking (Lock coupling)
-
-Concurrent queues:
-Queue: First in first out system which orders a sequence of operations.
-Two locks to enable concurrency of enqueue and dequeue operations.
-In the common case, the enqueue routine will only access the tail lock, and dequeue only the head lock.
-Queues are commonly used in mutli-threaded applications
-
-Concurrent hash table:
-It uses a lock per hash bucket for a better performance.
-Many concurrent operations are taking place.
-</h2>
+                There are 2 different types of counters:
+                Concurrent counter:
+                Counter: A device or function that stores the amount of times equal values are added or events have occurred
+                Counter with locks: When a routine is called, a lock is acquired, and it is released when the call is returned.
+                 Perfect scaling: Threads complete work on processors in parallel.
+                Approximate Counter:
+                Helps counter the issue of bugs in counter scalability on multicore machines.
+                A single logical counter using multiple local physical counters, one per CPU core, and a single global counter. 
+                A lock per local physical counter and the global counter.
+                
+                Concurrent linked lists:
+                Linked lists: An ordered structured which consists of nodes which has an element and a pointer
+                Issue with concurrent linked lists: Failure of function causes the lock to be released and must undo all the state before returning, causing bugs.
+                Only surrounding locks and releases around the critical code area.
+                Scaling linked lists: Hand over hand locking (Lock coupling)
+                
+                Concurrent queues:
+                Queue: First in first out system which orders a sequence of operations.
+                Two locks to enable concurrency of enqueue and dequeue operations.
+                In the common case, the enqueue routine will only access the tail lock, and dequeue only the head lock.
+                Queues are commonly used in mutli-threaded applications
+                
+                Concurrent hash table:
+                It uses a lock per hash bucket for a better performance.
+                Many concurrent operations are taking place.
+            <p>
+        </div>
     </div>
 </body>
 </html>
+
