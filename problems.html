@@ -5,35 +5,56 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://www.downloadclipart.net/large/40245-number-28-clipart.png" type="image/png">
-    <link rel="stylesheet" href="probems.css">
-    <tittle>COMMON CONCURRENCY PROBLEMS</tittle>
+    <link rel="stylesheet" href="problems.css">
+    <div id="toptopwrap">
+        <tittle>Concurrency Interactively: Common Concurrency Problems</tittle>
+    </div>
 </head>
+<nav>
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <div class="dropdown">
+            <button class="dropbtn">Summary</button>
+                <div class="dropdown-content">
+                <a href="lock_based.html">Lock Based Concurrency</a>
+                <a href="event_based.html">Event Based Concurrency</a>
+                <a href="conditional_variables.html">Conditional Variables</a>
+                <a href="locks.html">Locks</a>
+                <a href="problems.html">Problems</a>
+                <a href="semaphores.html">Semaphores</a>
+                <a href="game.html">Game</a>
+        </div>
+    </div>
+</nav>
 <body>
-    <div class="container">
-        <h1>ABOUT Common concurrency problems</h1>
-        <h2>Concurrency can bring some problems. To understand what may go wrong also gives inside to the solutions of the problems or ways to prevent these problems.
+    <div id="centerwrap">
+        <div class="container">
+            <h1>About Common Concurrency problems:</h1>
+            <p>
+                Concurrency can bring some problems. To understand what may go wrong also gives inside to the solutions of the problems or ways to prevent these problems.
 
-Bugs
-Non-Deadlock bugs
-The largest number of bugs are the non-deadlocks bugs. Here we have a working program, so the program does not freeze, but gets incorrect results when the threads execute. There are two major types: atomicity bugs and order violation bugs. With the first one, atomicity assumptions made by programmers are violated or interrupted during execution of concurrent threads. A solution to this problem can be to start and end the thread with locks. The second type of non-deadlock threads is order violation bugs. Here the order of two (groups of) memory accesses is flipped. For example because one thread is running faster than the other threads. This can be fixed with conditional variables.
-
-Deadlock bugs
-With the deadlock bugs, the program does freeze because it can not execute any further. There is a cycle where locks hold other threads but are also held themselves by a thread. There are 4 conditions for a deadlock to occur:
-·   	Mutual exclusion: Threads claim exclusive control of resources that they require.
-Prevention: Using powerful hardware to prevent having to use mutual exclusion at all.
-·   	Hold-and-wait: : Threads hold resources allocated to while waiting for additional resources.
-Prevention: Acquiring all locks at once. (Has some faults).
-·   	No preemption: Resources cannot be forcibly removed from threads that are holding them.
-Prevention: Using a trylock() routine.
-·   	Circular wait: There exists a circular chain of threads such that each thread holds one more resource that is being requested by the next thread in the chain.
-Prevention: Provide total ordering on lock acquisition to prevent a circular wait.\
-
-Other solutions to deadlocks are:
- Deadlock avoidance
-If OS knew which process needs which locks, it can schedule the processes so the deadlock will not occur.
- Detect and recover
-Reboot system or kill deadlocked processes
-</h2>
+                Bugs
+                Non-Deadlock bugs
+                The largest number of bugs are the non-deadlocks bugs. Here we have a working program, so the program does not freeze, but gets incorrect results when the threads execute. There are two major types: atomicity bugs and order violation bugs. With the first one, atomicity assumptions made by programmers are violated or interrupted during execution of concurrent threads. A solution to this problem can be to start and end the thread with locks. The second type of non-deadlock threads is order violation bugs. Here the order of two (groups of) memory accesses is flipped. For example because one thread is running faster than the other threads. This can be fixed with conditional variables.
+                
+                Deadlock bugs
+                With the deadlock bugs, the program does freeze because it can not execute any further. There is a cycle where locks hold other threads but are also held themselves by a thread. There are 4 conditions for a deadlock to occur:
+                ·   	Mutual exclusion: Threads claim exclusive control of resources that they require.
+                Prevention: Using powerful hardware to prevent having to use mutual exclusion at all.
+                ·   	Hold-and-wait: : Threads hold resources allocated to while waiting for additional resources.
+                Prevention: Acquiring all locks at once. (Has some faults).
+                ·   	No preemption: Resources cannot be forcibly removed from threads that are holding them.
+                Prevention: Using a trylock() routine.
+                ·   	Circular wait: There exists a circular chain of threads such that each thread holds one more resource that is being requested by the next thread in the chain.
+                Prevention: Provide total ordering on lock acquisition to prevent a circular wait.\
+                
+                Other solutions to deadlocks are:
+                 Deadlock avoidance
+                If OS knew which process needs which locks, it can schedule the processes so the deadlock will not occur.
+                 Detect and recover
+                Reboot system or kill deadlocked processes
+            <p>
+        </div>
     </div>
 </body>
 </html>
