@@ -37,6 +37,7 @@
                 You can also have a semaphore as a condition variable. A thread then has to wait for a condition to become true before it can continue doing its work. The semaphore is initially set to zero. If a thread has to wait for a condition to be met the thread will first call sem_wait() which decrements the semaphore value of 0 by 1 making it -1. When another thread then finishes its job which results in the condition being met it calls sem_post() which increments the semaphore value with 1 making it 0 again and wakes up one or more waiting threads so they can continue doing their work.
             </p>
         </div>
+        <iframe src="https://trinket.io/embed/python3/00987eeaac?toggleCode=true" width="100%" height="356" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
     </div>
 </body>
 </html>
