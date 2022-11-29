@@ -32,9 +32,39 @@
         <div class="container">
             <h1>About Conditional Variables:</h1>
             <p>
-                A condition variable is a queue where threads can put themselves on when a certain condition is not met. There are two operations associated with condition variables. Wait(), which a thread uses when a condition is not met so it wants to go to sleep, and Signal(), which a thread uses when it has changed something making it so the condition is met, that wakes up one or multiple threads that are waiting for the condition to be met. First a variable “done” will be made with the value 0 which is used to check if the condition is met or not before the thread will continue or call Wait(). This variable is there to prevent a thread from not being able to wake up if Signal() has already been called before the thread called Wait(). If it is 0 it won't be able to continue so it calls Wait() and enters the queue. It also goes to sleep so as to not waste precious CPU resources. When another thread has finished its work causing the condition to be met, it calls Signal() which increments the variable to 1 and wakes up one or more waiting threads in the queue so that they can continue. If the condition is already met when the thread checks the variable and sees a 1 it can simply continue.
+                A condition variable is a variable that determines if a certain condition has been met. Condition variables function as queues, when a condition is not met the thread will be put in a queue (put to sleep), and when the condition is met the thread is taken out of the queue (woken up).
                 
-                The operation Wait() has a mutex as a parameter which is locked when Wait() is being called. The lock is only released after the thread is put to sleep. When a thread wakes up Wait() has to reacquire the lock before it can return to that thread. This mutex system is there to prevent race conditions from happening. Without it there could be a situation where after a parent thread makes a child thread it checks if the variable done is 0. Since it is, it will call Wait() but just before it is able to do that it gets interrupted and the child thread calls Signal() and increments the variable done to 1. After that the parent thread calls Wait() and waits till the child thread is done. But because Signal() has already been called the parent thread will be waiting for something that won’t happen and it won’t be able to be woken up.
+                There are two operations associated with condition variables:
+                Wait(), which a thread uses when a condition is not met so it wants to go to sleep.
+                Signal(), which a thread uses when it has changed something making it so the condition is met, that wakes up one or multiple threads that are waiting for the condition to be met.
+
+                A common example of the use of Condition variables in concurrent programs is the Parent and the child program. The goal of the program is to run one thread before the other (e.g. first the child thread and then the parent thread, which is a function that creates the function of the child thread).
+
+                In the program the integer variable “done” is initialized with the value 0. This variable is used to check if the condition is met, before the parent thread will continue or call Wait(). This variable is there to prevent the parent thread from not being able to wake up if Signal() has already been called before the thread called Wait().
+                If “done” equals 0 it won't be able to continue so it calls Wait() and the parent thread enters the queue. It also goes to sleep so as to not waste precious CPU resources. When the child thread has finished its work causing the condition to be met, it calls Signal() which increments the variable “done” to 1 and wakes up the parent thread that is waiting in the queue. This enables the parent thread to continue. If the condition is already met when the thread checks the variable and sees a 1 it can simply continue.
+
+                The operation Wait() has a mutex as a parameter which is locked when Wait() is being called. The lock is only released after the parent thread is put to sleep. When the parent thread wakes up Wait() has to reacquire the lock before it can return to that thread. This mutex system is there to prevent race conditions from happening. Without it there could be a situation where after a parent thread makes a child thread it checks if the variable done is 0. Since it is, it will call Wait() but just before it is able to do that it gets interrupted and the child thread calls Signal() and increments the variable done to 1. After that the parent thread calls Wait() and waits till the child thread is done. But because Signal() has already been called the parent thread will be waiting for something that won’t happen and it won’t be able to be woken up.
+
+
+                There are 2 scenarios:
+                The Parent thread that continues before the child function runs
+                A function gets executed that checks if the child thread has run.
+                if it has not, it will put the parent thread to sleep with wait() and run the child thread by acquiring a lock.
+                After the child thread has been executed it increments the variable “done” by 1. Additionally, it calls signal() and wakes up the parent thread so that it can resume running. 
+
+                The child thread runs immediately after it is created by the parent thread
+                The child thread runs and after the child thread has been executed it increments the variable “done” by 1.
+                Then, it calls signal() to wake up the sleeping thread. However, in this case there is no sleeping thread because the parent function has not yet been executed.
+                Second, a function checks if the child thread is done and if it is it allows the parent thread to finally run.
+
+                In conclusion, the child thread always runs before the parent thread.
+
+
+                Rules of Condition variables:
+                Always use while loops instead of if statements
+                The threads that check if the child thread is done do this by checking the value of “done”. While the value of done is still equal to 0 the parent strand is kept asleep.
+
+                Hold the code when calling signal() or wait()
             <p>
         </div>
         
