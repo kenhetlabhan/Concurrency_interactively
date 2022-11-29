@@ -32,9 +32,18 @@
         <div class="container">
             <h1>About Semaphores:</h1>
             <p>
-                Semaphores are variables which can be decremented by 1 and incremented by 1 with sem_wait() and sem_post() respectively. A semaphore can be used as a lock. It then prevents too many threads from accessing something at the same time. Each time a thread wants to access a piece of content that is protected by a semaphore it has to first decrement the semaphore value with sem_wait() before it can proceed. When the resulting value is negative, meaning the maximum number of threads that are allowed to enter that piece of content is already accessing the content, the thread can’t continue and has to wait so it goes to sleep to preserve resources. When one of the threads that was accessing the content is done it increments the semaphore value by 1 and wakes up the waiting thread by calling sem_post() so it can now enter the content.
+                Semaphores are parameters and can be used to create locks and conditional variables to manage concurrent programs. Semaphores have an integer value that can be changed with 2 functions.
+                
+                sem_wait() is called by the waiting stand and decrements Semaphore’s value by 1.
+                sem_post() is called by the running stand and increments Semaphore’s value by 1.
 
-                You can also have a semaphore as a condition variable. A thread then has to wait for a condition to become true before it can continue doing its work. The semaphore is initially set to zero. If a thread has to wait for a condition to be met the thread will first call sem_wait() which decrements the semaphore value of 0 by 1 making it -1. When another thread then finishes its job which results in the condition being met it calls sem_post() which increments the semaphore value with 1 making it 0 again and wakes up one or more waiting threads so they can continue doing their work.
+                The objective of a Semaphore is to prevent too many threads from accessing something at the same time. Each time a thread wants to access a piece of content that is protected by a semaphore it has to first call sem_wait().
+                The tread can only proceed with the program and access the content if the semaphore value produced by decrementing is not negative.
+                If the resulting value is negative, this means the maximum number of threads that are allowed to enter that piece of content are accessing the content at that time.Therefore, the thread can’t continue and has to wait so it goes to sleep to preserve resources. When one of the running threads that was accessing the content is done it increments the semaphore value by 1 and wakes up the waiting thread by calling sem_post() so it can now enter the content.
+
+                You can also have a semaphore that acts as a condition variable. A thread then has to wait for a condition to become true before it can continue doing its work. The semaphore value is initially set to zero. If a thread has to wait for a condition to be met the thread will first call sem_wait() which decrements the semaphore value from 0 to -1. When another thread then finishes its job which results in the condition being met it calls sem_post() which increments the semaphore value from - 1 to 0 and wakes up one or more waiting threads so they can continue doing their work.
+
+                The main difference between binary Semaphores that act as locks and semaphores that act as conditional variables is that binary Semaphores have an initialized value of 1 or the maximum number of threads that are allowed to access the content simultaneously.
             </p>
         </div>
         
