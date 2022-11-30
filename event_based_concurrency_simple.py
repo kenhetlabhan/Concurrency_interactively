@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import messagebox
 
-def main_window(root: Tk):
+def main_window(root: tkinter):
     frame = Frame(root)
     frame.pack()
     Button_1 = Button(frame, text="Button 1", command=show_button_1)#the event handler. When an event takes place, namely you click the button it runs the function show_button().
@@ -15,7 +15,7 @@ def show_button_2():
 def show_button_1():
     messagebox.showinfo("Button 1.","This program uses an event loop and waits for an event, like clicking on this button. After you've exited this button the loop will continue and the program will wait for the next event. ")
 if __name__ == "__main__":
-    root = Tk()
+    root = tkinter()
     root.title("Event Loop Window")
     root.geometry('600x500')
     main_window(root)
