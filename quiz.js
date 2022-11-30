@@ -93,13 +93,7 @@
     }
   }
 
-  function showNextSlide() {
-    showSlide(currentSlide + 1);
-  }
-
-  function showPreviousSlide() {
-    showSlide(currentSlide - 1);
-  }
+  
 
   
   const quizContainer = document.getElementById('quiz');
@@ -210,13 +204,12 @@
   const previousButton = document.getElementById("previous");
   const nextButton = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
+  let currentSlide = 9;
 
 
   showSlide(currentSlide);
 
 
   submitButton.addEventListener('click', showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
+  
 })();
