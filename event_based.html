@@ -33,18 +33,23 @@
             <h1>About Event-based Concurrency:</h1>
             <p>
                 Event-based Concurrency is a modern approach and style of program that is composed of a single-thread concurrent application. It avoids the problem of multithread applications such as missing locks and deadlocks. It achieves this by utilizing an event loop, which waits for an event to occur. When an event finally occurs the event loop checks what type of event it is and completes the small amount of work required such as issuing an I/O or scheduling other events. 
-
+            </p>            
+            <p>
                 As an event handler, event-based concurrency only processes one event at a time. This means that only one activity is taking place in the system at any given time. Therefore, deciding which event to complete next is equivalent to scheduling.
-                    
+            </p>            
+            <p>                    
                 Event-base concurrency does its schedule via an API system calls such as select() or call(), which are interfaces that check for incoming I/Os. Simply a non-blocking event loop, checks for incoming packets, reads from their sockets with messages upon them, and replies as needed.
-                    
+            </p>            
+            <p>                    
                 One of the benefits of event-based concurrency is that there is no need for acquiring and releasing locks since it is an event handler and thus only process a single event at a time. Another benefit of event-based concurrency is that it can not be interrupted by other threads since it is a single-thread concurrent application.
                 For the same reason, event-based concurrency also offers greater control over the scheduler.
-                            
+            </p>            
+            <p>                            
                 The main Limitation of event-based concurrency is that it can not execute locks that will. For example, a simple HTTP request can cause the system to block. To overcome this limitation you must issue Asynchronous I/O which are alternative ways to issue an I/O request. Asynchronous I/O requires the event handler to do manual stacking. This makes it particularly difficult to integrate event-based concurrency into other aspects of the modern system such as packaging.
-                    
+            </p>            
+            <p>                    
                 Therefore, it is significantly more complicated to write event-based code compared to thread-based code.
-            <p>
+            </p>
         </div>
         
         <iframe width="420" height="315"
