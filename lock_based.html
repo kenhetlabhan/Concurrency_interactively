@@ -34,37 +34,52 @@
             <p>
                 Lock-based Concurrent Data Structures 
                 Adding locks to a data structure makes the structure thread-safe, therefore the data structure is usable by threads and leads to a high-yielding performance. There are several different structures: Counters, Linked-lists, Queues, and Hash Tables.
-
+            </p>            
+            <p>
                 There are 2 different types of counters:
+            </p>            
+            <p>
                 Concurrent counter:
+            </p>           
+            <p>
                 Counter: A device or function that stores the number of times equal values are added or events have occurred
-
+            </p>            
+            <p>
                 Counter with locks: When a routine is called, a lock is acquired, and it is released when the call is returned.
-
+            </p>           
+            <p>
                  Perfect scaling: Threads complete work on processors in parallel.
-
+            </p>            
+            <p>
                 Approximate Counter: Helps counter the issue of bugs in counter scalability on multicore machines.
-
+                
+            </p>           
+            <p>
                 A single logical counter using multiple local physical counters, one per CPU core, and a single global counter. 
-
+            </p>
+            <p>
                 A lock per local physical counter and the global counter.
 
-
-
+            </p>
+            <p>
                 Concurrent linked lists:
                 Linked lists: An ordered structure which consists of nodes which have an element and a pointer
-
+            
+            <p>
                 The issue with concurrent linked lists: Failure of function causes the lock to be released and must undo all the states before returning, causing bugs. Only surrounding locks and releases around the critical code area.
-
+            </p>          
+            <p>
                 Scaling linked lists: Hand over-hand locking (Lock coupling)
-
+            </p>
+            <p>
                 Concurrent queues:
                 Queue: First in first out system which orders a sequence of operations.
                 Two locks to enable concurrency of enqueue and dequeue operations.
-
+            </p>           
+            <p>
                 Concurrent hash table:mIt uses a lock per hash bucket for better performance.
                 Many concurrent operations are taking plac
-            <p>
+            </p>
         </div>
         
          <iframe width="420" height="315"
