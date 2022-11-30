@@ -28,8 +28,7 @@
     </div>
 </nav>
 <body>
-    <div id="centerwrap">
-        <div class="container">
+      div class="container">
             <h1>About Locks:</h1>
             <p>
                 Basically, a lock is a type of variable that creates limits on access to a certain resource when there are many threads of execution. A lock can either be locked or unlocked, therefore, one thread holds the lock and is presumably in a critical condition. 
@@ -90,6 +89,8 @@
             <p>
                 There also was an old approach to locks called the “two-phase lock”. The lock has 2 phases. In the first phase, the lock spins, hoping that it can acquire the lock, if unsuccessful the caller is put back to sleep until the lock becomes free. This approach is a hybrid approach because it combines 2 good ideas for a better idea. It is heavily dependent on the hardware environment, the number of threads, and other workload details, but making a single general-purpose lock is a real challenge.
             </p>
+            
+            <div id="centerwrap">
             <iframe width="420" height="315"
             src="https://www.youtube.com/embed/sog0si1fxE4">
             </iframe>
