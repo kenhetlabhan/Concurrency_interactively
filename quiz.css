@@ -1,20 +1,10 @@
-@import url(https://fonts.googleapis.com/css?family=Work+Sans:300,600);
-
 body{
 	font-size: 20px;
-	font-family: 'Work Sans', sans-serif;
-	color: #333;
   font-weight: 300;
   text-align: center;
-  background-color: #f8f6f0;
 }
 h1{
-  font-weight: 300;
-  margin: 0px;
-  padding: 10px;
-  font-size: 20px;
-  background-color: #444;
-  color: #fff;
+  color: #aa0404;
 }
 .question{
   font-size: 30px;
@@ -29,24 +19,68 @@ h1{
   display: block;
   margin-bottom: 10px;
 }
+
+.navbar {
+    overflow: hidden;
+    background-color: #9d0000f8;
+    text-align: center;
+  }
+
+.navbar a {
+    float:  left;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+    padding: 18px 16px;
+    text-decoration: none;
+  }
+
 button{
-  font-family: 'Work Sans', sans-serif;
-	font-size: 22px;
-	background-color: #279;
-	color: #fff;
-	border: 0px;
-	border-radius: 3px;
-	padding: 20px;
-	cursor: pointer;
-	margin-bottom: 20px;
-}
-button:hover{
-	background-color: #38a;
+	float: none;
+  background-color: #9d0000f8;
+  display: inline-block;
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 16px; /* Some padding */
+  font-size: 16px; /* Set a font size */
+  cursor: pointer; /* Mouse pointer on hover */
 }
 
+.dropdown {
+    text-align: center;
+    float: left;
+    overflow: hidden;
+  }
 
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #9d0000f8;
+    min-width: 160px;
+    z-index: 1;
+  }
+  
+.dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+.dropdown:hover .dropdown-content {display: block;}
+  
+.dropdown:hover .dropbtn {background-color: #8e3e3e;}
 
-
+.btn {
+    float: none;
+    background-color: #aa0404;
+    display: inline-block;
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 16px; /* Some padding */
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+}
 
 .slide{
   position: absolute;
